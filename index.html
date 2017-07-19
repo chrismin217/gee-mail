@@ -2,17 +2,71 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+
     <script>
+
       window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+        
+        console.log(geemails);
+
+        var main = document.getElementById("main");
+
+        for(var i = 0; i < geemails.length; i++) {
+            
+          var x = document.createElement("div");
+          x.className = "emailBox";
+
+          var dateArea = document.createElement("div");
+          dateArea.innerHTML = "Date: " + geemails[i].date;
+          dateArea.className = "dateBox";
+          x.appendChild(dateArea);
+
+          var senderArea = document.createElement("div");
+          senderArea.innerHTML = "Sender: " + geemails[i].sender;
+          senderArea.className = "senderBox";
+          x.appendChild(senderArea);
+
+          var subjectArea = document.createElement("div");
+          subjectArea.innerHTML = "Subject: " + geemails[i].subject;
+          subjectArea.className = "subjectBox";
+          x.appendChild(subjectArea);
+
+          var bodyArea = document.createElement("div");
+          var realMessage = geemails[i].body;
+          bodyArea.innerHTML = "Click Here to Read";
+          bodyArea.className = "bodyBox";
+          bodyArea.addEventListener("click", function myFunc(){
+            
+            this.innerHTML = realMessage;
+            this.style.color = "green";
+            
+            
+          });
+          x.appendChild(bodyArea);
+
+          main.appendChild(x);
+        }
+
+        var inbox = document.getElementById("inboxCounter");
+        inbox.innerHTML = "Inbox: " + geemails.length;
+        
+
+        
         
       };
-    </script>
+
+      </script>
+
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
+    <h1 id="title">The GeeMail Application<img src="assets/icon 1.jpg" alt="" id="img"></h1>
+    <div id="inboxCounter">
+      
+    </div>
+		
+    <div class="container" id="main">
+			
 		</div>
 	</body>
 </html>
