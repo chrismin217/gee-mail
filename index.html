@@ -3,12 +3,12 @@
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round|Montserrat" rel="stylesheet">
 
     <script>
 
       window.onload = function(){
-        
-        console.log(geemails);
 
         var main = document.getElementById("main");
 
@@ -17,40 +17,82 @@
           var x = document.createElement("div");
           x.className = "emailBox";
 
-          var dateArea = document.createElement("div");
-          dateArea.innerHTML = "Date: " + geemails[i].date;
-          dateArea.className = "dateBox";
-          x.appendChild(dateArea);
-
           var senderArea = document.createElement("div");
-          senderArea.innerHTML = "Sender: " + geemails[i].sender;
+          senderArea.innerHTML = geemails[i].sender;
           senderArea.className = "senderBox";
           x.appendChild(senderArea);
 
           var subjectArea = document.createElement("div");
-          subjectArea.innerHTML = "Subject: " + geemails[i].subject;
+          subjectArea.innerHTML = geemails[i].subject;
           subjectArea.className = "subjectBox";
           x.appendChild(subjectArea);
 
+          var dateArea = document.createElement("div");
+          dateArea.innerHTML = geemails[i].date;
+          dateArea.className = "dateBox";
+          x.appendChild(dateArea);
+
           var bodyArea = document.createElement("div");
           var realMessage = geemails[i].body;
+          bodyArea.className = "realBodyBox";
           bodyArea.innerHTML = "Click Here to Read";
-          bodyArea.className = "bodyBox";
-          bodyArea.addEventListener("click", function myFunc(){
-            
-            this.innerHTML = realMessage;
-            this.style.color = "green";
-            
-            
-          });
-          x.appendChild(bodyArea);
 
           main.appendChild(x);
+          main.appendChild(bodyArea);
+
+          bodyArea.addEventListener("click", function() {
+            this.style.color = "green";
+            this.innerHTML = realMessage;
+          });
         }
 
+        
         var inbox = document.getElementById("inboxCounter");
         inbox.innerHTML = "Inbox: " + geemails.length;
         
+        var inbox2 = document.getElementById("sentMail");
+        inbox2.innerHTML = "Sent: " + 0;
+        
+        var inbox3 = document.getElementById("drafts");
+        inbox3.innerHTML = "Drafts: " + 0;
+
+        var inbox4 = document.getElementById("trash");
+        inbox4.innerHTML = "Trash: " + 0;        
+
+        setInterval(function(){
+
+          geemails.push(getNewMessage()); 
+          inbox.innerHTML = "Inbox: " + geemails.length;
+
+          var i = document.createElement("div");
+          i.className = "emailBox";
+          var ten = document.createElement("div");
+          ten.className = "senderBox";
+          ten.innerHTML = geemails[geemails.length - 1].sender;
+          i.appendChild(ten);
+          var eleven = document.createElement("div");
+          eleven.className = "subjectBox";
+          eleven.innerHTML = geemails[geemails.length - 1].subject;
+          i.appendChild(eleven);
+          var twelve = document.createElement("div");
+          twelve.className = "dateBox";
+          twelve.innerHTML = geemails[geemails.length - 1].date;
+          i.appendChild(twelve);
+          
+          var j = document.createElement("div");
+          j.className = "realBodyBox";
+          j.innerHTML = "Click Here to Read";
+          var jj = geemails[geemails.length - 1].body;
+          j.addEventListener("click", function(){
+            this.style.color = "green";
+            this.innerHTML = jj;
+          });
+
+          main.appendChild(i);
+          main.appendChild(j);
+
+        
+        }, 5000);
 
         
         
@@ -60,13 +102,18 @@
 
 	</head>
 	<body>
+
     <h1 id="title">The GeeMail Application<img src="assets/icon 1.jpg" alt="" id="img"></h1>
-    <div id="inboxCounter">
-      
-    </div>
-		
+
     <div class="container" id="main">
-			
-		</div>
+    </div>
+
+        <div id="inboxCounter"></div>
+        <div id="sentMail"></div>
+        <div id="drafts"></div>
+        <div id="trash"></div>
+
+    
+
 	</body>
 </html>
