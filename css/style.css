@@ -1,0 +1,88 @@
+
+/*This is where the content pane is*/
+#title {
+  color: green;
+  font-family: 'Monoton', cursive;
+  width: 70%;
+}
+
+#img {
+  width: 8%;
+}
+
+#inboxCounter {
+  border: 1px solid black;
+  position: relative;
+  width: 10%;
+  height: 3%;
+  color: blue;
+}
+
+#sentMail {
+  border: 1px solid black;
+  position: relative;
+  width: 10%;
+  height: 3%;
+}
+
+#drafts {
+  border: 1px solid black;
+  position: relative;
+  width: 10%;
+  height: 3%;
+}
+
+#trash {
+  border: 1px solid black;
+  position: relative;
+  width: 10%;
+  height: 3%;
+}
+
+
+#main {
+  position: absolute;
+  width: 100%;
+  
+}
+
+.emailBox {
+  border: 1px solid black;
+  position: relative;
+  width: 50%;
+  height: 8%;
+  left: 11%;
+}
+
+.senderBox {
+  width: 22%;
+  display: inline;
+  margin-right: 15px;
+  font-family: 'Crete Round', serif;
+}
+
+.subjectBox {
+  position: relative;
+  width: 50%;
+  font-family: 'Montserrat', sans-serif;
+  display: inline;
+  margin-right: 30px;
+}
+
+.dateBox {
+  position: relative;
+  font-size: 10px;
+  width: 20%;
+  display: inline;
+}
+
+.realBodyBox {
+  border: 1px solid black;
+  position: relative;
+  width: 50%;
+  height: 8%;
+  left: 11%;
+  margin: 2px;
+
+}
+
