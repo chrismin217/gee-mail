@@ -33,18 +33,34 @@
           x.appendChild(dateArea);
 
           var bodyArea = document.createElement("div");
-          var realMessage = geemails[i].body;
           bodyArea.className = "realBodyBox";
           bodyArea.innerHTML = "Click Here to Read";
-          bodyArea.addEventListener("click", function() {
-            this.style.color = "green";
-            this.innerHTML = realMessage;
-          });
+            
+          var realArea = document.createElement("div");
+          realArea.innerHTML = geemails[i].body;
+          realArea.className = "messageBox";
+
+          bodyArea.appendChild(realArea); 
 
           main.appendChild(x);
           main.appendChild(bodyArea);
 
+        }
 
+        var z = document.getElementsByClassName("realBodyBox");
+        
+        for (var i = 0; i < z.length; i++) {
+          z[i].addEventListener("click", showBody);
+        }
+
+        function showBody(){
+          var s = this.querySelectorAll(".messageBox")[0];
+
+          if (s.style.display === "none") {
+            s.style.display = "block"; 
+          } else {
+            s.style.display = "none";
+          }
         }
 
         
